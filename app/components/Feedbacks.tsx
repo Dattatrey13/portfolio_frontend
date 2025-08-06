@@ -11,7 +11,7 @@ type FeedbackCardProps = {
 	index: number;
 	testimonial: string;
 	name: string;
-	link: string;
+	link?: string;
 	image: string;
 };
 
@@ -22,10 +22,38 @@ const FeedbackCard = ({
 	link,
 	image,
 }: FeedbackCardProps) => (
-	<Link href={link} target="_blank" rel="noopener noreferrer">
+	link ? (
+		<Link href={link} target="_blank" rel="noopener noreferrer">
+			<motion.div
+				variants={fadeIn("", "spring", index * 0.5, 0.75)}
+				className="bg-black-200 p-10 rounded-3xl xs:w-[320px] w-full cursor-pointer hover:scale-[1.02] transition-transform duration-300"
+			>
+				<p className="text-white font-black text-[48px]">&quot;</p>
+
+				<div className="mt-1">
+					<p className="text-white tracking-wider text-[18px]">{testimonial}</p>
+					<div className="mt-7 flex justify-between items-center gap-1">
+						<div className="flex-1 flex flex-col">
+							<p className="text-white font-medium text-[16px]">
+								<span className="blue-text-gradient">@</span>
+								{name}
+							</p>
+						</div>
+						<Image
+							src={image}
+							width={40}
+							height={40}
+							alt={`feedback by ${name}`}
+							className="w-10 h-10 rounded-full object-cover"
+						/>
+					</div>
+				</div>
+			</motion.div>
+		</Link>
+	) : (
 		<motion.div
 			variants={fadeIn("", "spring", index * 0.5, 0.75)}
-			className="bg-black-200 p-10 rounded-3xl xs:w-[320px] w-full cursor-pointer hover:scale-[1.02] transition-transform duration-300"
+			className="bg-black-200 p-10 rounded-3xl xs:w-[320px] w-full"
 		>
 			<p className="text-white font-black text-[48px]">&quot;</p>
 
@@ -48,7 +76,7 @@ const FeedbackCard = ({
 				</div>
 			</div>
 		</motion.div>
-	</Link>
+	)
 );
 
 const Feedbacks = () => {

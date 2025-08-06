@@ -129,8 +129,7 @@ const Contact = () => {
 				return;
 			}
 
-			// Send to your Node/MongoDB backend
-			const response = await fetch("https://portfoliobackend-production-b530.up.railway.app", {
+			const response = await fetch(`${process.env.NEXT_PUBLIC_API_BASE_URL}/api/contacts`, {
 				method: "POST",
 				headers: {
 					"Content-Type": "application/json",
