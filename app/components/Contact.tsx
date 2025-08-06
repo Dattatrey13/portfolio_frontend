@@ -130,7 +130,7 @@ const Contact = () => {
 			}
 
 			// Send to your Node/MongoDB backend
-			const response = await fetch("http://localhost:5000/api/contacts", {
+			const response = await fetch("https://portfoliobackend-production-b530.up.railway.app", {
 				method: "POST",
 				headers: {
 					"Content-Type": "application/json",
