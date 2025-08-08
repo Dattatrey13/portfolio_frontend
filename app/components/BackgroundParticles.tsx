@@ -185,7 +185,7 @@ const NotifySignup = () => {
               </svg>
             </motion.div>
             <p className="text-green-400 font-medium">
-              🎉 Thank you! We'll notify you when we launch.
+              🎉 Thank you! Well notify you when we launch.
             </p>
           </motion.div>
         )}
