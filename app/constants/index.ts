@@ -90,8 +90,8 @@ const technologies = [
 const experiences = [
 	{
 		title: "Web Developer",
-		company_name: "Pyonix Technology",
-		icon: "/company/avm.webp",
+		company_name: "Prodigy Infotecch",
+		icon: "/company/prodigy.png",
 		iconBg: "#383E56",
 		date: " 2024 - 2025",
 		points: [
@@ -104,7 +104,7 @@ const experiences = [
 	{
 		title: "ReactNative App Developer",
 		company_name: "Pyonix Technology",
-		icon: "/company/sparkbright.webp",
+		icon: "/company/pyonix.jpg",
 		iconBg: "#E6DEDD",
 		date: "2025 - Present",
 		points: [
@@ -116,7 +116,7 @@ const experiences = [
 	{
 		title: "Flutter App Developer",
 		company_name: "Pyonix Technology",
-		icon: "/company/wtw.jpg",
+		icon: "/company/pyonix.jpg",
 		iconBg: "#E6DEDD",
 		date: "2025 - Present",
 		points: [
@@ -198,7 +198,7 @@ const projects :{
 				color: "green-text-gradient",
 			},
 		],
-		image: "/projectimg/avm.webp",
+		image: "/projectimg/avm.png",
 		platform: "Mobile",
 		deploy_link: "https://avmauto.in/",
 	},
