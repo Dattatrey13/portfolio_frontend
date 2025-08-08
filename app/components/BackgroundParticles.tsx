@@ -3,7 +3,8 @@ import { slideIn, textVariant, fadeIn } from "@/app/utils/motion";
 import { motion, AnimatePresence } from "framer-motion";
 import { useState, useEffect } from "react";
 import { SectionWrapper } from "./HigherOrderComponents";
-import { useRouter } from "next/navigation";
+import { useRouter, useSearchParams } from "next/navigation";
+import Image from "next/image";
 
 // Animated Background Particles
 const BackgroundParticles = () => {
@@ -16,12 +17,12 @@ const BackgroundParticles = () => {
           key={particle}
           className="absolute w-1 h-1 bg-white rounded-full opacity-20"
           initial={{
-            x: Math.random() * window.innerWidth,
-            y: Math.random() * window.innerHeight,
+            x: typeof window !== 'undefined' ? Math.random() * window.innerWidth : 0,
+            y: typeof window !== 'undefined' ? Math.random() * window.innerHeight : 0,
           }}
           animate={{
-            x: Math.random() * window.innerWidth,
-            y: Math.random() * window.innerHeight,
+            x: typeof window !== 'undefined' ? Math.random() * window.innerWidth : 0,
+            y: typeof window !== 'undefined' ? Math.random() * window.innerHeight : 0,
           }}
           transition={{
             duration: Math.random() * 10 + 20,
@@ -100,7 +101,6 @@ const CountdownTimer = () => {
   );
 };
 
-// Notification Signup Component
 const NotifySignup = () => {
   const [email, setEmail] = useState("");
   const [isSubmitted, setIsSubmitted] = useState(false);
@@ -152,7 +152,7 @@ const NotifySignup = () => {
             <button
               type="submit"
               disabled={loading || !email.trim()}
-              className="bg-gradient-to-r from-purple-600 to-blue-600 hover:from-purple-700 hover:to-blue-700 py-3 px-8 text-white font-bold rounded-xl shadow-lg shadow-purple-500/25 disabled:opacity-50 disabled:cursor-not-allowed transition-all duration-300 transform hover:scale-105 active:scale-95"
+              className="bg-gradient-to-r from-purple-600 to-blue-600 hover:from-purple-700 hover:to-blue-700 py-3 px-8 text-white font-bold rounded-xl shadow-lg shadow-purple-500/25 disabled:opacity-50 disabled:cursor-not-allowed transition-all duration-300"
             >
               {loading ? (
                 <span className="flex items-center justify-center space-x-2">
@@ -196,12 +196,26 @@ const NotifySignup = () => {
 
 const ComingSoon = () => {
   const router = useRouter();
+  const searchParams = useSearchParams();
+  const [projectData, setProjectData] = useState<any>(null);
   const [currentStatus, setCurrentStatus] = useState(0);
   const statuses = [
     "Coming Soon",
     "Under Development", 
     "Almost Ready"
   ];
+
+  useEffect(() => {
+    const projectParam = searchParams.get('project');
+    if (projectParam) {
+      try {
+        const decoded = JSON.parse(decodeURIComponent(projectParam));
+        setProjectData(decoded);
+      } catch (error) {
+        console.error('Error parsing project data:', error);
+      }
+    }
+  }, [searchParams]);
 
   useEffect(() => {
     const interval = setInterval(() => {
@@ -223,9 +237,27 @@ const ComingSoon = () => {
       {/* Main Content */}
       <div className="relative z-10 max-w-6xl mx-auto px-6 py-12 text-center">
         
+        {/* Project Image (if available) */}
+        {projectData?.image && (
+          <motion.div
+            variants={fadeIn("down", "spring", 0, 1)}
+            className="mb-8 mx-auto max-w-md"
+          >
+            <div className="relative w-full h-48 rounded-2xl overflow-hidden border border-purple-500/30 shadow-2xl shadow-purple-500/25">
+              <Image
+                src={projectData.image}
+                alt={projectData.name}
+                fill
+                className="object-cover"
+              />
+              <div className="absolute inset-0 bg-gradient-to-t from-purple-600/30 to-transparent" />
+            </div>
+          </motion.div>
+        )}
+
         {/* Status Badge */}
         <motion.div
-          variants={fadeIn("down", "spring", 0, 1)}
+          variants={fadeIn("down", "spring", 0.1, 1)}
           className="inline-block mb-8"
         >
           <div className="bg-gradient-to-r from-purple-600/30 to-blue-600/30 backdrop-blur-sm border border-purple-500/30 rounded-full px-6 py-2">
@@ -250,7 +282,7 @@ const ComingSoon = () => {
           className="mb-8"
         >
           <h1 className="heroHeadText bg-gradient-to-r from-white via-purple-200 to-blue-200 bg-clip-text text-transparent">
-            Something Amazing
+            {projectData?.name || "Something Amazing"}
           </h1>
           <h2 className="heroHeadText bg-gradient-to-r from-purple-400 via-blue-400 to-cyan-400 bg-clip-text text-transparent">
             is Coming Soon
@@ -260,21 +292,49 @@ const ComingSoon = () => {
         {/* Description */}
         <motion.p
           variants={fadeIn("up", "tween", 0.3, 1)}
-          className="heroSubText max-w-3xl mx-auto mb-12 leading-relaxed"
+          className="heroSubText max-w-3xl mx-auto mb-8 leading-relaxed"
         >
-          This project is currently under development and will be available soon. 
-          We're working hard to bring you an incredible experience with cutting-edge 
-          technology and modern design. Stay tuned for updates!
+          {projectData?.description || 
+           "This project is currently under development and will be available soon. We're working hard to bring you an incredible experience with cutting-edge technology and modern design."}
         </motion.p>
+
+        {/* Project Tags */}
+        {projectData?.tags && (
+          <motion.div
+            variants={fadeIn("up", "tween", 0.35, 1)}
+            className="mb-8 flex flex-wrap justify-center gap-3"
+          >
+            {projectData.tags.map((tag: any, index: number) => (
+              <span
+                key={index}
+                className={`px-4 py-2 rounded-full text-sm font-medium border border-purple-500/30 bg-gradient-to-r from-purple-600/20 to-blue-600/20 backdrop-blur-sm ${tag.color}`}
+              >
+                #{tag.name}
+              </span>
+            ))}
+          </motion.div>
+        )}
+
+        {/* Platform Badge */}
+        {projectData?.platform && (
+          <motion.div
+            variants={fadeIn("up", "tween", 0.37, 1)}
+            className="mb-8"
+          >
+            <div className="inline-flex items-center gap-2 px-4 py-2 bg-gradient-to-r from-blue-600/20 to-cyan-600/20 border border-blue-500/30 rounded-full backdrop-blur-sm">
+              <span className="text-blue-300 font-medium">Platform: {projectData.platform}</span>
+            </div>
+          </motion.div>
+        )}
 
         {/* Back Button */}
         <motion.div
-          variants={fadeIn("up", "tween", 0.35, 1)}
+          variants={fadeIn("up", "tween", 0.4, 1)}
           className="mb-8"
         >
           <button
             onClick={() => router.back()}
-            className="bg-tertiary hover:bg-tertiary/80 py-3 px-6 text-white font-medium rounded-xl border border-white/10 transition-all duration-300 transform hover:scale-105 active:scale-95 flex items-center gap-2"
+            className="bg-tertiary hover:bg-tertiary/80 py-3 px-6 text-white font-medium rounded-xl border border-white/10 transition-all duration-300 flex items-center gap-2 mx-auto"
           >
             <svg className="w-5 h-5" fill="none" stroke="currentColor" viewBox="0 0 24 24">
               <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M10 19l-7-7m0 0l7-7m-7 7h18" />
@@ -285,7 +345,7 @@ const ComingSoon = () => {
 
         {/* Countdown Timer */}
         <motion.div
-          variants={fadeIn("up", "tween", 0.4, 1)}
+          variants={fadeIn("up", "tween", 0.5, 1)}
           className="mb-12"
         >
           <h3 className="text-xl md:text-2xl text-white font-semibold mb-8">
@@ -296,18 +356,18 @@ const ComingSoon = () => {
 
         {/* Email Signup */}
         <motion.div
-          variants={fadeIn("up", "tween", 0.5, 1)}
+          variants={fadeIn("up", "tween", 0.6, 1)}
           className="mb-12"
         >
           <h3 className="text-xl md:text-2xl text-white font-semibold mb-6">
-            Get Notified
+            Get Notified About {projectData?.name || "This Project"}
           </h3>
           <NotifySignup />
         </motion.div>
 
         {/* Social Links or Additional Info */}
         <motion.div
-          variants={fadeIn("up", "tween", 0.6, 1)}
+          variants={fadeIn("up", "tween", 0.7, 1)}
           className="flex justify-center gap-6"
         >
           <div className="flex items-center gap-2 text-secondary">
