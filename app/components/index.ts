@@ -4,9 +4,9 @@ import ResumeButton from './ResumeButton';
 import Navbar from './Navbar';
 import About from './About';
 import Tech from './Tech';
-import Experience from './Works';
 import ComingSoon from '../coming-soon/page';
 import Works from './Works';
+import Experience from './Experience';
 import Feedbacks from './Feedbacks';
 import Contact from './Contact';
 
