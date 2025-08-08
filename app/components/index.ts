@@ -4,7 +4,8 @@ import ResumeButton from './ResumeButton';
 import Navbar from './Navbar';
 import About from './About';
 import Tech from './Tech';
-import Experience from './ComingSoon';
+import Experience from './Works';
+import ComingSoon from '../coming-soon/page';
 import Works from './Works';
 import Feedbacks from './Feedbacks';
 import Contact from './Contact';
@@ -22,5 +23,6 @@ export {
   EarthCanvas, 
   BallCanvas, 
   ComputersCanvas, 
-  StarsCanvas
+  StarsCanvas,
+  ComingSoon
 }
