@@ -1,11 +1,11 @@
 "use client";
-"use client";
 import { slideIn, textVariant, fadeIn } from "@/app/utils/motion";
 import { motion, AnimatePresence } from "framer-motion";
 import { useState, useEffect } from "react";
 import { SectionWrapper } from "../components/HigherOrderComponents";
 import { useRouter, useSearchParams } from "next/navigation";
 import Image from "next/image";
+// ...existing code...
 
 const ComingSoon = () => {
   const router = useRouter();
@@ -209,4 +209,14 @@ const ComingSoon = () => {
   );
 };
 
-export default SectionWrapper(ComingSoon, "coming-soon");
+import { Suspense } from "react";
+
+const WrappedComingSoon = SectionWrapper(ComingSoon, "coming-soon");
+
+export default function Page() {
+  return (
+    <Suspense fallback={<div>Loading...</div>}>
+      <WrappedComingSoon />
+    </Suspense>
+  );
+}
