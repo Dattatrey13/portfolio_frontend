@@ -9,7 +9,6 @@ import {
 	Works,
 	StarsCanvas,
 } from "./components";
-import ComingSoon from "./components/ComingSoon";
 
 export default function Home() {
 	return (
@@ -23,7 +22,7 @@ export default function Home() {
 			<Tech />
 			<Works />
 			<Feedbacks />
-			<ComingSoon />
+		
 			<div className="relative z-0">
 				<Contact />
 				<StarsCanvas />
