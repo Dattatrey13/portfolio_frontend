@@ -4,7 +4,7 @@ import ResumeButton from './ResumeButton';
 import Navbar from './Navbar';
 import About from './About';
 import Tech from './Tech';
-import Experience from './BackgroundParticles';
+import Experience from './ComingSoon';
 import Works from './Works';
 import Feedbacks from './Feedbacks';
 import Contact from './Contact';
