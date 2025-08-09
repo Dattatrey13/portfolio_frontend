@@ -155,9 +155,9 @@ const testimonials = [
 	},
 	{
 		id: 3,
-		testimonial:"Instagram",
+		testimonial:"Instagram is a photo and video-sharing social media platform focused on visual content and personal expression through mobile apps and web.",
 		name: "Dattatrey Joshi",
-		image: "/socialmedia/dribble.svg",
+		image: "/socialmedia/instagram.avif",
 		link: "https://www.instagram.com/rudrainfotech.d?igsh=cWE1amY0aXF0Y2Rp",
 	},
 	// {
@@ -199,6 +199,7 @@ const projects :{
 			},
 		],
 		image: "/projectimg/avm.png",
+		source_code_link: "https://github.com/omunite215/React-Admin-DashBoard",
 		platform: "Mobile",
 		deploy_link: "https://avmauto.in/",
 	},
