@@ -1,4 +1,3 @@
-// Updated ProjectCard Component
 "use client";
 import { motion } from "framer-motion";
 import Image from "next/image";
@@ -36,17 +35,31 @@ const ProjectCard = ({
 }: ProjectCardProps) => {
 	const router = useRouter();
 
-	const handleCardClick = () => {
-		// Navigate to coming-soon with project data as query params
-		const projectData = encodeURIComponent(JSON.stringify({
-			name,
-			description,
-			tags,
-			image,
-			platform,
-			deploy_link
-		}));
-		router.push(`/coming-soon?project=${projectData}`);
+	const handleCardClick = (e: React.MouseEvent) => {
+		// Prevent navigation if clicking on links
+		const target = e.target as HTMLElement;
+		if (target.closest('a')) {
+			return;
+		}
+
+		try {
+			// Navigate to coming-soon with project data as query params
+			const projectData = {
+				name,
+				description,
+				tags,
+				image,
+				platform,
+				deploy_link
+			};
+			
+			const encodedData = encodeURIComponent(JSON.stringify(projectData));
+			router.push(`/coming-soon?project=${encodedData}`);
+		} catch (error) {
+			console.error('Navigation error:', error);
+			// Fallback navigation without data
+			router.push('/coming-soon');
+		}
 	};
 
 	const handleLinkClick = (e: React.MouseEvent) => {
@@ -75,7 +88,7 @@ const ProjectCard = ({
 
 	return (
 		// <motion.div variants={fadeIn("up", "spring", index * 0.5, 0.75)}>
-		<div>
+			<div>
 			<Tilt
 				options={{
 					max: 45,
@@ -99,7 +112,7 @@ const ProjectCard = ({
 							<Link
 								href={source_code_link}
 								target="_blank"
-								className="black-gradient w-10 h-10 rounded-full flex justify-center items-center cursor-pointer hover:bg-purple-600/30 hover:shadow-lg hover:shadow-purple-500/50 transition-all duration-200"
+								className="black-gradient w-10 h-10 rounded-full flex justify-center items-center cursor-pointer hover:bg-purple-600/30 hover:shadow-lg hover:shadow-purple-500/50 transition-all duration-200 z-10"
 								onClick={handleLinkClick}
 							>
 								<Image
@@ -114,7 +127,7 @@ const ProjectCard = ({
 						<Link
 							href={deploy_link}
 							target="_blank"
-							className="black-gradient w-10 h-10 ml-2 rounded-full flex justify-center items-center cursor-pointer hover:bg-purple-600/30 hover:shadow-lg hover:shadow-purple-500/50 transition-all duration-200"
+							className="black-gradient w-10 h-10 ml-2 rounded-full flex justify-center items-center cursor-pointer hover:bg-purple-600/30 hover:shadow-lg hover:shadow-purple-500/50 transition-all duration-200 z-10"
 							onClick={handleLinkClick}
 						>
 							<Image
@@ -128,7 +141,7 @@ const ProjectCard = ({
 					</div>
 
 					{/* Color overlay on hover */}
-					<div className="absolute inset-0 bg-gradient-to-t from-purple-600/10 to-transparent opacity-0 hover:opacity-100 transition-opacity duration-300 rounded-2xl"></div>
+					<div className="absolute inset-0 bg-gradient-to-t from-purple-600/10 to-transparent opacity-0 hover:opacity-100 transition-opacity duration-300 rounded-2xl pointer-events-none"></div>
 				</div> 
 
 			    <div className="mt-5">
@@ -147,8 +160,8 @@ const ProjectCard = ({
 					))}
 				</div>
 			</Tilt>
-		{/* </motion.div> */}
-		</div>
+			</div>
+		// </motion.div>
 	);
 };
 

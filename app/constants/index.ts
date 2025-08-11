@@ -158,7 +158,7 @@ const testimonials = [
 		testimonial:"Instagram is a photo and video-sharing social media platform focused on visual content and personal expression through mobile apps and web.",
 		name: "Dattatrey Joshi",
 		image: "/socialmedia/instagram.avif",
-		link: "https://www.instagram.com/rudrainfotech.d?igsh=cWE1amY0aXF0Y2Rp",
+		// link: "https://www.instagram.com/rudrainfotech.d?igsh=cWE1amY0aXF0Y2Rp",
 	},
 	// {
 	// 	id: 4,
