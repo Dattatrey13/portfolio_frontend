@@ -30,10 +30,10 @@ const ExperienceCard = ({ experience }: ExperienceCardProps) => {
         <div className="flex justify-center items-center w-full h-full">
           <Image
             src={experience.icon}
-            width={58}
-            height={58}
+            width={68}
+            height={68}
             alt={experience.company_name}
-            className="w-[70%] h-[70%] object-contain"
+            className="w-[80%] h-[80%] object-contain"
           />
         </div>
       }

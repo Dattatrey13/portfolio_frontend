@@ -171,8 +171,7 @@ const testimonials = [
 
 ];
 
-
-const projects :{
+const projects: {
 	name: string;
 	description: string;
 	tags: {
@@ -191,11 +190,11 @@ const projects :{
 		tags: [
 			{
 				name: "App",
-				color: "blue-text-gradient",
+				color: "text-blue-400",
 			},
 			{
 				name: "Android | ios",
-				color: "green-text-gradient",
+				color: "text-green-400",
 			},
 		],
 		image: "/projectimg/avm.png",
@@ -210,15 +209,15 @@ const projects :{
 		tags: [
 			{
 				name: "Reactjs",
-				color: "red-text-gradient",
+				color: "text-red-400",
 			},
 			{
 				name: "Node",
-				color: "orange-text-gradient",
+				color: "text-orange-400",
 			},
 			{
 				name: "Mongodb",
-				color: "blue-text-gradient",
+				color: "text-blue-400",
 			},
 		],
 		image: "/projectimg/sparkbright.png",
@@ -233,11 +232,11 @@ const projects :{
 		tags: [
 			{
 				name: "next",
-				color: "green-text-gradient",
+				color: "text-green-400",
 			},
 			{
 				name: "tailwind",
-				color: "blue-text-gradient",
+				color: "text-blue-400",
 			},
 		],
 		image: "/projectimg/hoobank.webp",
@@ -252,19 +251,19 @@ const projects :{
 		tags: [
 			{
 				name: "react",
-				color: "blue-text-gradient",
+				color: "text-blue-400",
 			},
 			{
 				name: "materialui",
-				color: "orange-text-gradient",
+				color: "text-orange-400",
 			},
 			{
 				name: "MongoDB",
-				color: "green-text-gradient",
+				color: "text-green-400",
 			},
 			{
 				name: "Express",
-				color: "pink-text-gradient",
+				color: "text-pink-400",
 			},
 		],
 		image: "/projectimg/mern.png",
@@ -279,15 +278,15 @@ const projects :{
 		tags: [
 			{
 				name: "react",
-				color: "blue-text-gradient",
+				color: "text-blue-400",
 			},
 			{
 				name: "tailwind",
-				color: "green-text-gradient",
+				color: "text-green-400",
 			},
 			{
 				name: "framer-motion",
-				color: "orange-text-gradient",
+				color: "text-orange-400",
 			},
 		],
 		image: "/projectimg/metaverse.png",
@@ -302,19 +301,19 @@ const projects :{
 		tags: [
 			{
 				name: "next",
-				color: "blue-text-gradient",
+				color: "text-blue-400",
 			},
 			{
 				name: "tailwind",
-				color: "green-text-gradient",
+				color: "text-green-400",
 			},
 			{
 				name: "shadCN",
-				color: "orange-text-gradient",
+				color: "text-orange-400",
 			},
 			{
 				name: "mySQL",
-				color: "green-text-gradient",
+				color: "text-green-400",
 			},
 		],
 		image: "/projectimg/issuetracker.png",
