@@ -101,11 +101,11 @@ const ProjectCard = ({
 		<motion.div variants={fadeIn("up", "spring", index * 0.5, 0.75)}>
 			<Tilt
 				options={{
-					max: 45,
+					max: 0,
 					scale: 1,
-					speed: 450,
+					speed: 0,
 				}}
-				className="bg-tertiary p-5 rounded-2xl sm:w-[360px] w-full min-w-[280px] min-h-[450px] cursor-pointer hover:bg-purple-900/20 hover:shadow-xl hover:shadow-purple-500/25 border border-transparent hover:border-purple-500/30"
+				className="bg-tertiary p-5 rounded-2xl sm:w-[360px] w-full min-w-[280px] min-h-[450px] cursor-pointer hover:bg-purple-900/20 hover:shadow-xl hover:shadow-purple-500/25 transition-all duration-300 border border-transparent hover:border-purple-500/30"
 				onClick={handleCardClick}
 			>
 				<div className="relative w-full h-[230px] group">
@@ -123,7 +123,7 @@ const ProjectCard = ({
 								href={source_code_link}
 								target="_blank"
 								rel="noopener noreferrer"
-								className="black-gradient w-10 h-10 rounded-full flex justify-center items-center cursor-pointer hover:bg-purple-600/30 hover:shadow-lg hover:shadow-purple-500/50 "
+								className="black-gradient w-10 h-10 rounded-full flex justify-center items-center cursor-pointer hover:bg-purple-600/30 hover:shadow-lg hover:shadow-purple-500/50 transition-all duration-200"
 								onClick={handleLinkClick}
 							>
 								<Image
@@ -139,7 +139,7 @@ const ProjectCard = ({
 							href={deploy_link}
 							target="_blank"
 							rel="noopener noreferrer"
-							className="black-gradient w-10 h-10 ml-2 rounded-full flex justify-center items-center cursor-pointer hover:bg-purple-600/30 hover:shadow-lg hover:shadow-purple-500/50 "
+							className="black-gradient w-10 h-10 ml-2 rounded-full flex justify-center items-center cursor-pointer hover:bg-purple-600/30 hover:shadow-lg hover:shadow-purple-500/50 transition-all duration-200"
 							onClick={handleLinkClick}
 						>
 							<Image
