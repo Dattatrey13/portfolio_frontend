@@ -35,15 +35,18 @@ const ProjectCard = ({
 }: ProjectCardProps) => {
 	const router = useRouter();
 
-	const handleCardClick = (e: React.MouseEvent) => {
+	const handleCardClick = async (e: React.MouseEvent) => {
+		console.log('Card clicked!', name); // Debug log
+		
 		// Prevent navigation if clicking on links
 		const target = e.target as HTMLElement;
-		if (target.closest('a')) {
+		if (target.closest('a') || target.closest('button')) {
+			console.log('Link clicked, preventing card navigation');
 			return;
 		}
 
 		try {
-			// Navigate to coming-soon with project data as query params
+			// Create project data object
 			const projectData = {
 				name,
 				description,
@@ -53,8 +56,15 @@ const ProjectCard = ({
 				deploy_link
 			};
 			
+			console.log('Navigating with data:', projectData); // Debug log
+			
+			// Navigate to coming-soon with project data as query params
 			const encodedData = encodeURIComponent(JSON.stringify(projectData));
-			router.push(`/coming-soon?project=${encodedData}`);
+			const url = `/coming-soon?project=${encodedData}`;
+			
+			console.log('Navigation URL:', url); // Debug log
+			
+			await router.push(url);
 		} catch (error) {
 			console.error('Navigation error:', error);
 			// Fallback navigation without data
@@ -64,6 +74,7 @@ const ProjectCard = ({
 
 	const handleLinkClick = (e: React.MouseEvent) => {
 		e.stopPropagation();
+		console.log('Link clicked, stopped propagation');
 	};
 
 	const getPlatformIcon = (platform: string) => {
@@ -87,8 +98,7 @@ const ProjectCard = ({
 	};
 
 	return (
-		// <motion.div variants={fadeIn("up", "spring", index * 0.5, 0.75)}>
-			<div>
+		<motion.div variants={fadeIn("up", "spring", index * 0.5, 0.75)}>
 			<Tilt
 				options={{
 					max: 45,
@@ -107,12 +117,13 @@ const ProjectCard = ({
 						className="w-full h-full object-cover rounded-2xl group-hover:brightness-110 transition-all duration-300"
 					/>
 
-					<div className="absolute inset-0 flex justify-end m-3 card-img_hover">
+					<div className="absolute inset-0 flex justify-end m-3 card-img_hover z-10">
 						{source_code_link && (
 							<Link
 								href={source_code_link}
 								target="_blank"
-								className="black-gradient w-10 h-10 rounded-full flex justify-center items-center cursor-pointer hover:bg-purple-600/30 hover:shadow-lg hover:shadow-purple-500/50 transition-all duration-200 z-10"
+								rel="noopener noreferrer"
+								className="black-gradient w-10 h-10 rounded-full flex justify-center items-center cursor-pointer hover:bg-purple-600/30 hover:shadow-lg hover:shadow-purple-500/50 transition-all duration-200"
 								onClick={handleLinkClick}
 							>
 								<Image
@@ -127,7 +138,8 @@ const ProjectCard = ({
 						<Link
 							href={deploy_link}
 							target="_blank"
-							className="black-gradient w-10 h-10 ml-2 rounded-full flex justify-center items-center cursor-pointer hover:bg-purple-600/30 hover:shadow-lg hover:shadow-purple-500/50 transition-all duration-200 z-10"
+							rel="noopener noreferrer"
+							className="black-gradient w-10 h-10 ml-2 rounded-full flex justify-center items-center cursor-pointer hover:bg-purple-600/30 hover:shadow-lg hover:shadow-purple-500/50 transition-all duration-200"
 							onClick={handleLinkClick}
 						>
 							<Image
@@ -141,7 +153,7 @@ const ProjectCard = ({
 					</div>
 
 					{/* Color overlay on hover */}
-					<div className="absolute inset-0 bg-gradient-to-t from-purple-600/10 to-transparent opacity-0 hover:opacity-100 transition-opacity duration-300 rounded-2xl pointer-events-none"></div>
+					<div className="absolute inset-0 bg-gradient-to-t from-purple-600/10 to-transparent opacity-0 group-hover:opacity-100 transition-opacity duration-300 rounded-2xl pointer-events-none"></div>
 				</div> 
 
 			    <div className="mt-5">
@@ -160,8 +172,7 @@ const ProjectCard = ({
 					))}
 				</div>
 			</Tilt>
-			</div>
-		// </motion.div>
+		</motion.div>
 	);
 };
 
