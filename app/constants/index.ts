@@ -231,12 +231,16 @@ const projects: {
 			"A responsive Bank HomePage showcasing different features such as various payment gateways integration, easy money transfer, advanced security, etc. It has a beautiful interface made using Tailwind CSS and React",
 		tags: [
 			{
-				name: "next",
+				name: "Flutter",
 				color: "text-green-400",
 			},
 			{
-				name: "tailwind",
+				name: "Firebase",
 				color: "text-blue-400",
+			},
+			{
+				name: "Python",
+				color: "text-orange-400",
 			},
 		],
 		image: "/projectimg/hoobank.webp",
@@ -247,7 +251,7 @@ const projects: {
 	{
 		name: "Admin Dashboard",
 		description:
-			" Designed and developed a visually appealing and user-friendly Data Analytics Dashboard using MERN",
+			" Designed and developed a visually appealing and user-friendly Data Analytics Dashboard using MERN.",
 		tags: [
 			{
 				name: "react",
@@ -274,7 +278,34 @@ const projects: {
 	{
 		name: "Order Notification App",
 		description:
-			"A Modern UI/UX Landing Page using Framer Motion and TailwindCSS with a feel and looks of Web 3.0",
+			// "A Modern UI/UX Landing Page using Framer Motion and TailwindCSS with a feel and looks of Web 3.0",
+			"A Flutter-based app that instantly sends push notifications to your mobile device whenever you place an order, keeping you updated in real-time.",
+		tags: [
+			{
+				name: "Flutter",
+				color: "text-green-400",
+			},
+			{
+				name: "Firebase",
+				color: "text-blue-400",
+			},
+			{
+				name: "Android | ios",
+				color: "text-orange-400",
+			}
+
+		],
+		image: "/projectimg/metaverse.png",
+		// source_code_link: "https://github.com/omunite215/Project_Metaverse",
+		platform: "Vercel",
+		deploy_link: "https://project-metaverse-beta.vercel.app/",
+	},
+	{
+		// name: "Issue Tracker",
+		name: "Modern UI/UX Landing Page",
+		description:
+			// "A Next.JS Full Stack Issue Tracker made using Next.Js, ShadCN UI, Prisma, mySQL with latest features like Next.JS Server Components, and Serverless features.",
+			 "A Modern UI/UX Landing Page using Framer Motion and TailwindCSS with a feel and looks of Web 3.0",
 		tags: [
 			{
 				name: "react",
@@ -287,33 +318,6 @@ const projects: {
 			{
 				name: "framer-motion",
 				color: "text-orange-400",
-			},
-		],
-		image: "/projectimg/metaverse.png",
-		// source_code_link: "https://github.com/omunite215/Project_Metaverse",
-		platform: "Vercel",
-		deploy_link: "https://project-metaverse-beta.vercel.app/",
-	},
-	{
-		name: "Issue Tracker",
-		description:
-			"A Next.JS Full Stack Issue Tracker made using Next.Js, ShadCN UI, Prisma, mySQL with latest features like Next.JS Server Components, and Serverless features.",
-		tags: [
-			{
-				name: "next",
-				color: "text-blue-400",
-			},
-			{
-				name: "tailwind",
-				color: "text-green-400",
-			},
-			{
-				name: "shadCN",
-				color: "text-orange-400",
-			},
-			{
-				name: "mySQL",
-				color: "text-green-400",
 			},
 		],
 		image: "/projectimg/issuetracker.png",

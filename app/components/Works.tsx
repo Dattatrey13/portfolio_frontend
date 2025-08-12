@@ -36,9 +36,9 @@ const ProjectCard = ({
     router.push(`/coming-soon?project=${encodedData}`);
   };
 
-  const handleLinkClick = (e: React.MouseEvent) => {
-    e.stopPropagation(); // allow GitHub click without triggering navigation
-  };
+  // const handleLinkClick = (e: React.MouseEvent) => {
+  //   e.stopPropagation(); // allow GitHub click without triggering navigation
+  // };
 
   return (
     <motion.div variants={fadeIn("up", "spring", index * 0.5, 0.75)}>
@@ -55,7 +55,7 @@ const ProjectCard = ({
               alt="project_image"
               className="w-full h-full object-cover rounded-2xl group-hover:brightness-110 transition-all duration-300"
             />
-            <div className="absolute inset-0 flex justify-end m-3 z-10">
+            {/* <div className="absolute inset-0 flex justify-end m-3 z-10">
               {source_code_link && (
                 <Link
                   href={source_code_link}
@@ -73,7 +73,7 @@ const ProjectCard = ({
                   />
                 </Link>
               )}
-            </div>
+            </div> */}
           </div>
 
           <div className="mt-5">
