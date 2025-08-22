@@ -73,7 +73,7 @@ Specializations:
 [<img src="https://skillicons.dev/icons?i=devto" />](https://portfoliobyom.netlify.app/)
 
 ## 🗒️ Authors
-- Om Patel
+- Dattatrey Joshi
 
 <p align="left">
   <a href="https://skillicons.dev">
