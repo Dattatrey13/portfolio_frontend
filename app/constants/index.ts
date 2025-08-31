@@ -129,14 +129,14 @@ const experiences = [
 ];
 
 const testimonials = [
-	// {
-	// 	id: 1,
-	// 	testimonial:
-	// 		"Behance is a social media platform owned by Adobe whose main focus is to showcase and discover creative work.",
-	// 	name: "Dattatrey Joshi",
-	// 	image: "/socialmedia/behance.svg",
-	// 	link: "https://www.behance.net/omthecreator",
-	// },
+	{
+		id: 1,
+		testimonial:
+			"Behance is a social media platform owned by Adobe whose main focus is to showcase and discover creative work.",
+		name: "Dattatrey Joshi",
+		image: "/socialmedia/behance.svg",
+		link: "https://www.behance.net/omthecreator",
+	},
 		{
 		id: 1,
 		testimonial:
