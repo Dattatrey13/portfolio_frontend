@@ -39,9 +39,9 @@ const ProjectCard = ({
     router.push(`/coming-soon?project=${encodedData}`);
   };
 
-  // const handleLinkClick = (e: React.MouseEvent) => {
-  //   e.stopPropagation(); // allow GitHub click without triggering navigation
-  // };
+  const handleLinkClick = (e: React.MouseEvent) => {
+    e.stopPropagation(); // allow GitHub click without triggering navigation
+  };
 
   return (
     <motion.div variants={fadeIn("up", "spring", index * 0.5, 0.75)}>
